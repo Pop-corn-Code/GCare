@@ -123,8 +123,8 @@
           <div class="container-small px-lg-7 px-xxl-3">
             <div class="row align-items-center">
               <div class="col-12 col-lg-6 pt-8 pb-6 position-relative z-5 text-center text-lg-start">
-                <h1 class="fs-3 fs-md-2 fs-xl-1 fw-black mb-4"><span class="text-gradient-info me-3">Elegance</span>for<br>your web app</h1>
-                <p class="mb-5 pe-xl-10">Standard, modern and Elegant solution for your next web app so you don’t have to look further. Sign up or check the demo below.</p><a class="btn btn-lg btn-primary rounded-pill me-3" href="#!" role="button">Sign up</a><a class="btn btn-link me-2 fs-8 p-0" href="#!" role="button">Check Demo<span class="fa-solid fa-angle-right ms-2 fs-9"></span></a>
+                <h1 class="fs-3 fs-md-2 fs-xl-1 fw-black mb-4"><span class="text-gradient-info me-3">Your First </span><br>Step to Better Health</h1>
+                <p class="mb-5 pe-xl-10">Providing standard, modern, and elegant solutions for initial medication suggestions while you connect with your doctor. Sign up or explore the demo below.</p><a class="btn btn-lg btn-primary rounded-pill me-3" href="{{route('app.register-form')}}" role="button">Sign up</a><a class="btn btn-link me-2 fs-8 p-0" href="#!" role="button">Check Demo<span class="fa-solid fa-angle-right ms-2 fs-9"></span></a>
               </div>
               <div class="col-12 col-lg-auto d-none d-lg-block">
                 <div class="hero-image-container position-absolute h-100 end-0 d-flex align-items-center">
