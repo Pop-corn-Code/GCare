@@ -14,8 +14,8 @@
                 <div class="bg-holder" style="background-image:url(../../assets/img/bg/bg-38.png);background-position:center;background-size:100%;"></div>
                 <!--/.bg-holder-->
                 <div class="card-body position-relative"><img class="img-fluid mb-5 d-dark-none" src="../../assets/img/spot-illustrations/37.png" width="260" alt="..."><img class="img-fluid mb-5 d-light-none" src="../../assets/img/spot-illustrations/37_2.png" width="260" alt="...">
-                  <p class="fw-bold">2008 Premium Icons <span class="text-primary fs-6">.</span> Included FREE with it</p>
-                  <h1 class="fs-6 fs-sm-4 fs-lg-2 fw-bolder lh-sm mb-3">Join<span class="gradient-text-primary mx-2">Phoenix</span><span>Today</span></h1>
+                  {{-- <p class="fw-bold">2008 Premium Icons <span class="text-primary fs-6">.</span> Included FREE with it</p> --}}
+                  <h1 class="fs-6 fs-sm-4 fs-lg-2 fw-bolder lh-sm mb-3">Join<span class="gradient-text-primary mx-2">GCare</span><span>Today</span></h1>
                   <form class="d-flex justify-content-center mb-3 px-xxl-15">
                     <div class="d-grid d-sm-block"></div><input class="form-control me-3" id="ctaEmail1" type="email" placeholder="Email" aria-describedby="ctaEmail1"><button class="btn btn-primary" type="submit">Subscribe</button>
                   </form>

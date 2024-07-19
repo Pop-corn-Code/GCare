@@ -10,6 +10,8 @@ Route::get('/', function () {
 
 Route::get('landing', Landing::class);
 Route::controller(AuthController::class)->group(function(){
-    Route::get('login', ' loginForm')->name('app.login-form');
-    Route::get('register', ' registerForm')->name('app.register-form');
+    Route::get('login', 'loginForm')->name('app.login-form');
+    Route::get('register', 'registerForm')->name('app.register-form');
+    Route::post('login', 'authenticate')->name('app.login');
+    Route::post('register', 'register')->name('app.register');
 });

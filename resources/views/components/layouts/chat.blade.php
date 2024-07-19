@@ -21,8 +21,8 @@
                   </a></div>
                 <div class="text-center mt-auto">
                   <div class="avatar avatar-3xl status-online"><img class="rounded-circle border border-3 border-light-subtle" src="{{asset('logo/gemini.png')}}" alt=""></div>
-                  <h5 class="mt-2 mb-3">Eric</h5>
-                  <p class="text-center text-body-emphasis mb-0">Ask us anything – we’ll get back to you here or by email within 24 hours.</p>
+                  <h5 class="mt-2 mb-3">Gemini</h5>
+                  <p class="text-center text-body-emphasis mb-0">Have questions? Get immediate answers and support from our team!</p>
                 </div>
               </div>
             </div>
