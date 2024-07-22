@@ -7,11 +7,11 @@
             <div class="col-xl-auto text-center"><a href="#"><img src="{{asset('logo/logo1.png')}}" height="48" alt=""></a></div>
                 <div class="col-xl-auto flex-1">
                     <ul class="list-unstyled d-flex justify-content-center flex-wrap mb-0 border-end-xl border-dashed gap-3 gap-xl-8 pe-xl-5 pe-xxl-8 w-75 w-md-100 mx-auto">
-                    <li><a class="text-light text-opacity-75" href="">Contact us</a></li>
+                    <li><a class="text-light text-opacity-75" href="#contact">Contact us</a></li>
                     <li><a class="text-light text-opacity-75" href="">Newsroom</a></li>
                     <li><a class="text-light text-opacity-75" href="">Opportunities</a></li>
-                    <li><a class="text-light text-opacity-75" href="">Login</a></li>
-                    <li><a class="text-light text-opacity-75" href="">Sign Up</a></li>
+                    <li><a class="text-light text-opacity-75" href="{{route('app.login-form')}}">Login</a></li>
+                    <li><a class="text-light text-opacity-75" href="{{route('app.register-form')}}">Sign Up</a></li>
                     <li><a class="text-light text-opacity-75" href="">Support</a></li>
                     <li><a class="text-light text-opacity-75" href="">FAQ</a></li>
                     </ul>

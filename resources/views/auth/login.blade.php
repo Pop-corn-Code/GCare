@@ -43,7 +43,7 @@
                             <div class="col mx-auto">
                                 <div class="auth-form-box">
                                     <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4"
-                                            href="#">
+                                            href="{{route('app.landing')}}">
                                             <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img
                                                     src="{{ asset('logo/logo2.png') }}" alt="phoenix"
                                                     width="58"></div>
@@ -83,11 +83,9 @@
                                         </div>
                                     @endif
 
-                                    <button class="btn btn-phoenix-secondary w-100 mb-3"><span
+                                    <a type="button" href="{{route('auth.google')}}" class="btn btn-phoenix-secondary w-100 mb-3"><span
                                             class="fab fa-google text-danger me-2 fs-9"></span>Sign in with
-                                        google</button><button class="btn btn-phoenix-secondary w-100"><span
-                                            class="fab fa-facebook text-primary me-2 fs-9"></span>Sign in with
-                                        facebook</button>
+                                        google</a>
                                     <div class="position-relative">
                                         <hr class="bg-body-secondary mt-5 mb-4">
                                         <div class="divider-content-center bg-body-emphasis">or use email</div>

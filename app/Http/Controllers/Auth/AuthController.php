@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -21,9 +22,15 @@ class AuthController extends Controller
     }
 
     public function loginForm(){
+        if($this->isLoggedIn()){
+            return redirect()->intended('/dash');
+        }
         return view('auth.login');
     }
     public function registerForm(){
+        if($this->isLoggedIn()){
+            return redirect()->intended('/dash');
+        }
         return view('auth.register');
     }
 
@@ -70,4 +77,6 @@ class AuthController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
+
+
 }

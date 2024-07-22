@@ -84,7 +84,7 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="pb-10 pb-xl-14">
+      <section class="pb-10 pb-xl-14" id="contact">
         <div class="container-small px-lg-7 px-xxl-3">
           <div class="text-center mb-7">
             <h5 class="text-info mb-3">Contact</h5>

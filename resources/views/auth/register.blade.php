@@ -26,12 +26,12 @@
                   </div>
                   <div class="col mx-auto">
                     <div class="auth-form-box">
-                      <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
+                      <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="{{route('app.landing')}}">
                           <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('logo/logo2.png')}}" alt="phoenix" width="58"></div>
                         </a>
                         <h3 class="text-body-highlight">Sign Up</h3>
                         <p class="text-body-tertiary">Create your account today</p>
-                      </div><button class="btn btn-phoenix-secondary w-100 mb-3"><span class="fab fa-google text-danger me-2 fs-9"></span>Sign up with google</button><button class="btn btn-phoenix-secondary w-100"><span class="fab fa-facebook text-primary me-2 fs-9"></span>Sign up with facebook</button>
+                      </div><button class="btn btn-phoenix-secondary w-100 mb-3"><span class="fab fa-google text-danger me-2 fs-9"></span>Sign up with google</button>
                       <div class="position-relative mt-4">
                         <hr class="bg-body-secondary">
                         <div class="divider-content-center bg-body-emphasis">or use email</div>
