@@ -23,13 +23,13 @@ class AuthController extends Controller
 
     public function loginForm(){
         if($this->isLoggedIn()){
-            return redirect()->intended('/dash');
+            return redirect('/dash');
         }
         return view('auth.login');
     }
     public function registerForm(){
         if($this->isLoggedIn()){
-            return redirect()->intended('/dash');
+            return redirect('/dash');
         }
         return view('auth.register');
     }
