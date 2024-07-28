@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Livewire\Dash\Index;
+use App\Livewire\Dash\Profile;
+use App\Livewire\Dash\Settings;
 use App\Livewire\Landing;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +19,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('register', 'registerForm')->name('app.register-form');
     Route::post('login', 'authenticate')->name('app.login');
     Route::post('register', 'register')->name('app.register');
-  
+    Route::post('logout', 'logout')->name('app.logout');
 });
 
 Route::controller(GoogleController::class)->group(function(){
@@ -29,4 +31,6 @@ Route::controller(GoogleController::class)->group(function(){
 /**
  * Dashboard route
  */
-Route::get('dash', Index::class)->name('app.dashboard');
+Route::get('dash', Index::class)->name('app.dash.dashboard');
+Route::get('profile', Profile::class)->name('app.dash.profile');
+Route::get('settings', Settings::class)->name('app.dash.settings');

@@ -1,4 +1,6 @@
-
+@section('page-title')
+Dashboard
+@endsection
       <div>
         <div class="pb-5">
           <div class="row g-4">

@@ -8,7 +8,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>{{ $title ?? 'Page Title' }}</title>
+    <title>{{ config('app.name') }} - @yield('page-title')</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
@@ -63,7 +63,7 @@
     @if( $request->routeIs('app.landing') )
       @include('components.navigation.navbar')
     @endif
-    @if( $request->routeIs('app.dashboard') )
+    @if( $request->routeIs('app.dash.*') )
         @include('components.navigation.dash.nav')
         {{-- @include('components.navigation.dash.sidebar')
         @include('components.navigation.dash.navbar') --}}
@@ -173,7 +173,7 @@
 
         {{ $slot }}
 
-    @if($request->routeIs('app.dashboard'))
+    @if($request->routeIs('app.dash.*'))
         @include('components.dash.footer')
       </div>
     @endif
