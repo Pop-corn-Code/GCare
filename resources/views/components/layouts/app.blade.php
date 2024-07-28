@@ -31,10 +31,10 @@
     <link href="../../css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link href="vendors/simplebar/simplebar.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../release/v4.0.8/css/line.css">
-    <link href="assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
-    <link href="assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
-    <link href="assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
-    <link href="assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+    <link href="{{asset('assets/css/theme-rtl.min.css')}}" type="text/css" rel="stylesheet" id="style-rtl">
+    <link href="{{asset('assets/css/theme.min.css')}}" type="text/css" rel="stylesheet" id="style-default">
+    <link href="{{asset('assets/css/user-rtl.min.css')}}" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="{{asset('assets/css/user.min.css')}}" type="text/css" rel="stylesheet" id="user-style-default">
     <script>
       var phoenixIsRTL = window.config.config.phoenixIsRTL;
       if (phoenixIsRTL) {
@@ -50,23 +50,139 @@
         userLinkRTL.setAttribute('disabled', true);
       }
     </script>
-    <link href="vendors/leaflet/leaflet.css" rel="stylesheet">
-    <link href="vendors/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
-    <link href="vendors/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="{{asset('vendors/leaflet/leaflet.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/leaflet.markercluster/MarkerCluster.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/leaflet.markercluster/MarkerCluster.Default.css')}}" rel="stylesheet">
   </head>
-    <body class="bg-body-emphasis" style="--phoenix-scroll-margin-top: 1.2rem;">
- <!-- ===============================================-->
+  @inject('request', 'Illuminate\Http\Request')
+  <body class="bg-body-emphasis" style="--phoenix-scroll-margin-top: 1.2rem;">
+    <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
+    @if( $request->routeIs('app.landing') )
       @include('components.navigation.navbar')
-      
+    @endif
+    @if( $request->routeIs('app.dashboard') )
+        @include('components.navigation.dash.nav')
+        {{-- @include('components.navigation.dash.sidebar')
+        @include('components.navigation.dash.navbar') --}}
+      <script>
+        var navbarTopShape = window.config.config.phoenixNavbarTopShape;
+        var navbarPosition = window.config.config.phoenixNavbarPosition;
+        var body = document.querySelector('body');
+        var navbarDefault = document.querySelector('#navbarDefault');
+        var navbarTop = document.querySelector('#navbarTop');
+        var topNavSlim = document.querySelector('#topNavSlim');
+        var navbarTopSlim = document.querySelector('#navbarTopSlim');
+        var navbarCombo = document.querySelector('#navbarCombo');
+        var navbarComboSlim = document.querySelector('#navbarComboSlim');
+        var dualNav = document.querySelector('#dualNav');
+
+        var documentElement = document.documentElement;
+        var navbarVertical = document.querySelector('.navbar-vertical');
+
+        if (navbarPosition === 'dual-nav') {
+          topNavSlim.remove();
+          navbarTop.remove();
+          navbarVertical.remove();
+          navbarTopSlim.remove();
+          navbarCombo.remove();
+          navbarComboSlim.remove();
+          navbarDefault.remove();
+          dualNav.removeAttribute('style');
+          document.documentElement.setAttribute('data-navigation-type', 'dual');
+
+        } else if (navbarTopShape === 'slim' && navbarPosition === 'vertical') {
+          navbarDefault.remove();
+          navbarTop.remove();
+          navbarTopSlim.remove();
+          navbarCombo.remove();
+          navbarComboSlim.remove();
+          topNavSlim.style.display = 'block';
+          navbarVertical.style.display = 'inline-block';
+          document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+
+        } else if (navbarTopShape === 'slim' && navbarPosition === 'horizontal') {
+          navbarDefault.remove();
+          navbarVertical.remove();
+          navbarTop.remove();
+          topNavSlim.remove();
+          navbarCombo.remove();
+          navbarComboSlim.remove();
+          dualNav.remove();
+          navbarTopSlim.removeAttribute('style');
+          document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+        } else if (navbarTopShape === 'slim' && navbarPosition === 'combo') {
+          navbarDefault.remove();
+          navbarTop.remove();
+          topNavSlim.remove();
+          navbarCombo.remove();
+          navbarTopSlim.remove();
+          dualNav.remove();
+          navbarComboSlim.removeAttribute('style');
+          navbarVertical.removeAttribute('style');
+          document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+        } else if (navbarTopShape === 'default' && navbarPosition === 'horizontal') {
+          navbarDefault.remove();
+          topNavSlim.remove();
+          navbarVertical.remove();
+          navbarTopSlim.remove();
+          navbarCombo.remove();
+          navbarComboSlim.remove();
+          dualNav.remove();
+          navbarTop.removeAttribute('style');
+          document.documentElement.setAttribute('data-navigation-type', 'horizontal');
+        } else if (navbarTopShape === 'default' && navbarPosition === 'combo') {
+          topNavSlim.remove();
+          navbarTop.remove();
+          navbarTopSlim.remove();
+          navbarDefault.remove();
+          navbarComboSlim.remove();
+          dualNav.remove();
+          navbarCombo.removeAttribute('style');
+          navbarVertical.removeAttribute('style');
+          document.documentElement.setAttribute('data-navigation-type', 'combo');
+
+
+        } else {
+          topNavSlim.remove();
+          navbarTop.remove();
+          navbarTopSlim.remove();
+          navbarCombo.remove();
+          navbarComboSlim.remove();
+          dualNav.remove();
+          navbarDefault.removeAttribute('style');
+          navbarVertical.removeAttribute('style');
+        }
+
+        var navbarTopStyle = window.config.config.phoenixNavbarTopStyle;
+        var navbarTop = document.querySelector('.navbar-top');
+        if (navbarTopStyle === 'darker') {
+          navbarTop.setAttribute('data-navbar-appearance', 'darker');
+        }
+
+        var navbarVerticalStyle = window.config.config.phoenixNavbarVerticalStyle;
+        var navbarVertical = document.querySelector('.navbar-vertical');
+        if (navbarVerticalStyle === 'darker') {
+          navbarVertical.setAttribute('data-navbar-appearance', 'darker');
+        }
+      </script>
+      <div class="content">
+    @endif
+
         {{ $slot }}
 
+    @if($request->routeIs('app.dashboard'))
+        @include('components.dash.footer')
+      </div>
+    @endif
+
+    @if( $request->routeIs('app.landing') )
       @include('components.newsletter')
-
-
       @include('components.footer')
+    @endif
+
       @include('components.layouts.chat')
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
@@ -76,21 +192,21 @@
         <!-- ===============================================-->
         <!--    JavaScripts-->
         <!-- ===============================================-->
-        <script src="vendors/popper/popper.min.js"></script>
-        <script src="vendors/bootstrap/bootstrap.min.js"></script>
-        <script src="vendors/anchorjs/anchor.min.js"></script>
-        <script src="vendors/is/is.min.js"></script>
-        <script src="vendors/fontawesome/all.min.js"></script>
-        <script src="vendors/lodash/lodash.min.js"></script>
-        <script src="../../v3/polyfill.min.js?features=window.scroll"></script>
-        <script src="vendors/list.js/list.min.js"></script>
-        <script src="vendors/feather-icons/feather.min.js"></script>
-        <script src="vendors/dayjs/dayjs.min.js"></script>
-        <script src="vendors/leaflet/leaflet.js"></script>
-        <script src="vendors/leaflet.markercluster/leaflet.markercluster.js"></script>
-        <script src="vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js"></script>
-        <script src="assets/js/phoenix.js"></script>
-        <script src="vendors/echarts/echarts.min.js"></script>
-        <script src="assets/js/ecommerce-dashboard.js"></script>
+        <script src="{{asset('vendors/popper/popper.min.js')}}"></script>
+        <script src="{{asset('vendors/bootstrap/bootstrap.min.js')}}"></script>
+        <script src="{{asset('vendors/anchorjs/anchor.min.js')}}"></script>
+        <script src="{{asset('vendors/is/is.min.js')}}"></script>
+        <script src="{{asset('vendors/fontawesome/all.min.js')}}"></script>
+        <script src="{{asset('vendors/lodash/lodash.min.js')}}"></script>
+        <script src="{{asset('v3/polyfill.min.js?features=window.scroll')}}"></script>
+        <script src="{{asset('vendors/list.js/list.min.js')}}"></script>
+        <script src="{{asset('vendors/feather-icons/feather.min.js')}}"></script>
+        <script src="{{asset('vendors/dayjs/dayjs.min.js')}}"></script>
+        <script src="{{asset('vendors/leaflet/leaflet.js')}}"></script>
+        <script src="{{asset('vendors/leaflet.markercluster/leaflet.markercluster.js')}}"></script>
+        <script src="{{asset('vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js')}}"></script>
+        <script src="{{asset('assets/js/phoenix.js')}}"></script>
+        <script src="{{asset('vendors/echarts/echarts.min.js')}}"></script>
+        <script src="{{asset('assets/js/ecommerce-dashboard.js')}}"></script>
     </body>
 </html>

@@ -29,4 +29,4 @@ Route::controller(GoogleController::class)->group(function(){
 /**
  * Dashboard route
  */
-Route::get('dash', Index::class)->name('dashboard');
+Route::get('dash', Index::class)->name('app.dashboard');
