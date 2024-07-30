@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class EnvironmentalData extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'user_id',
+        'data_type',
+        'value',
+        'recorded_at',
+    ];
 }

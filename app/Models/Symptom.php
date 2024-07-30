@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Symptom extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'date',
+        'time',
+        'symptom_type',
+        'severity',
+        'notes',
+    ];
 }

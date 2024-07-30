@@ -32,7 +32,7 @@
                 <!-- label-->
                 <p class="navbar-vertical-label">Modules</p>
                 <hr class="navbar-vertical-line" /><!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link label-1" href="documentation/getting-started.html" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.log-symptom')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="life-buoy"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Log Symptoms</span></span></div>
                   </a></div><!-- parent pages-->
                 <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-layouts-doc" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-layouts-doc">
@@ -62,16 +62,16 @@
                     </ul>
                   </div>
                 </div><!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link label-1" href="documentation/gulp.html" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.recent-symptom')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa-brands fa-gulp ms-1 me-1 fa-lg"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Recent Symptoms</span></span></div>
                   </a></div><!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link label-1" href="documentation/design-file.html" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.triggers')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="figma"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Triggers</span></span></div>
                   </a></div><!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link label-1" href="changelog.html" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.recommendation')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="git-merge"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Recommendations</span></span></div>
                   </a></div><!-- parent pages-->
-                <div class="nav-item-wrapper"><a class="nav-link label-1" href="showcase.html" role="button" data-bs-toggle="" aria-expanded="false">
+                <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.environmental-data')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="monitor"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Environmental Data</span></span></div>
                   </a></div>
               </li>
@@ -95,7 +95,7 @@
                   <a class="nav-link label-1" href="{{route('app.dash.settings')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center">
                       <span class="nav-link-icon">
-                        <span data-feather="help-circle"></span>
+                        <span class="fab fa-penny-arcade"></span>
                       </span>
                       <span class="nav-link-text-wrapper">
                       <span class="nav-link-text">Help</span>
