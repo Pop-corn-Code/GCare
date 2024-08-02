@@ -18,6 +18,15 @@ class Symptom extends Component
     public $symptomType; 
     public $symptom_id; 
     public $symptomData; 
+    public $inputs = [];
+    public $i = 1;
+
+    public function addContactPerson($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->inputs, $i);
+    }
 
     protected $rules = [
         'date' => 'required|date',

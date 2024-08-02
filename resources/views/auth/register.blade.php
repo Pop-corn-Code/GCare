@@ -1,6 +1,6 @@
 @extends('auth.app')
 
-@section('title', 'Login')
+@section('title', 'Sign Up')
 @section('content')
 <div class="container-fluid bg-body-tertiary dark__bg-gray-1200">
         <div class="bg-holder bg-auth-card-overlay" style="background-image:url(../../../assets/img/bg/37.png);"></div>

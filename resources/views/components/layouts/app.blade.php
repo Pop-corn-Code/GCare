@@ -192,6 +192,7 @@
         <!-- ===============================================-->
         <!--    JavaScripts-->
         <!-- ===============================================-->
+        <script src="{{asset('js/script.js')}}"></script>
         <script src="{{asset('vendors/popper/popper.min.js')}}"></script>
         <script src="{{asset('vendors/bootstrap/bootstrap.min.js')}}"></script>
         <script src="{{asset('vendors/anchorjs/anchor.min.js')}}"></script>

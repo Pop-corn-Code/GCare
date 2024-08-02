@@ -33,7 +33,7 @@
                 <p class="navbar-vertical-label">Modules</p>
                 <hr class="navbar-vertical-line" /><!-- parent pages-->
                 <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.log-symptom')}}" role="button" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="life-buoy"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Log Symptoms</span></span></div>
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fab fa-cloudsmith"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Log Symptoms</span></span></div>
                   </a></div><!-- parent pages-->
                 <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-layouts-doc" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-layouts-doc">
                     <div class="d-flex align-items-center">
@@ -74,6 +74,9 @@
                 <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.environmental-data')}}" role="button" data-bs-toggle="" aria-expanded="false">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="monitor"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Environmental Data</span></span></div>
                   </a></div>
+                <div class="nav-item-wrapper"><a class="nav-link label-1" href="{{route('app.dash.chat-history')}}" role="button" data-bs-toggle="" aria-expanded="false">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="git-merge"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Chat History</span></span></div>
+                  </a></div><!-- parent pages-->
               </li>
               <li class="nav-item">
                 <!-- label-->

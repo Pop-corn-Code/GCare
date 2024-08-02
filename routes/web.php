@@ -3,8 +3,10 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Livewire\Dash\AllergyStatus;
+use App\Livewire\Dash\Conversation;
 use App\Livewire\Dash\EnvironmentalData;
 use App\Livewire\Dash\Index;
+use App\Livewire\Dash\Map;
 use App\Livewire\Dash\Profile;
 use App\Livewire\Dash\RecentSymptom;
 use App\Livewire\Dash\Recommendation;
@@ -44,5 +46,7 @@ Route::get('recent-symptom', RecentSymptom::class)->name('app.dash.recent-sympto
 Route::get('triggers', Trigger::class)->name('app.dash.triggers');
 Route::get('recommendation', Recommendation::class)->name('app.dash.recommendation');
 Route::get('environmental-data', EnvironmentalData::class)->name('app.dash.environmental-data');
+Route::get('chat-history', Conversation::class)->name('app.dash.chat-history');
 Route::get('profile', Profile::class)->name('app.dash.profile');
 Route::get('settings', Settings::class)->name('app.dash.settings');
+Route::get('map', Map::class)->name('app.dash.map');
