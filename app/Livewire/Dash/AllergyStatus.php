@@ -15,6 +15,9 @@ class AllergyStatus extends Component
 
     public function mount()
     {
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
         $this->loadData();
     }
 
@@ -36,6 +39,9 @@ class AllergyStatus extends Component
 
     public function render()
     {
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
         return view('livewire.dash.allergy-status');
     }
 }

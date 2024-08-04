@@ -10,8 +10,10 @@ class Recommendation extends Component
 {
     public $recommendations;
 
-    public function mount()
-    {
+    public function mount(){
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
         $this->loadData();
     }
 
@@ -27,6 +29,9 @@ class Recommendation extends Component
 
     public function render()
     {
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
         return view('livewire.dash.recommendation');
     }
 }

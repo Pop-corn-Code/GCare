@@ -6,3 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/execute-gemi', [GeminiController::class, 'callGemi']);
+Route::get('/conversation/{id}/messages', [GeminiController::class, 'getConversationMessages']);

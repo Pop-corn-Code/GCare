@@ -127,6 +127,9 @@ class Index extends Component
 
     public function render()
     {
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
         return view('livewire.dash.index', [
             'newSymptomsToday' => $this->newSymptomsToday,
             'highSeveritySymptomsToday' => $this->highSeveritySymptomsToday,

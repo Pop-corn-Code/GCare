@@ -47,4 +47,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the conversations for the user.
+     */
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class);
+    }
 }

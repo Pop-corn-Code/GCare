@@ -53,6 +53,10 @@
     <link href="{{asset('vendors/leaflet/leaflet.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/leaflet.markercluster/MarkerCluster.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/leaflet.markercluster/MarkerCluster.Default.css')}}" rel="stylesheet">
+
+{{-- Map integration --}}
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}"></script>
+
   </head>
   @inject('request', 'Illuminate\Http\Request')
   <body class="bg-body-emphasis" style="--phoenix-scroll-margin-top: 1.2rem;">

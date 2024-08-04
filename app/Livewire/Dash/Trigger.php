@@ -13,6 +13,9 @@ class Trigger extends Component
 
     public function mount()
     {
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
         $this->loadData();
     }
 
@@ -29,6 +32,7 @@ class Trigger extends Component
 
     public function render()
     {
+        
         return view('livewire.dash.trigger');
     }
 }

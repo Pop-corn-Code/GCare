@@ -21,6 +21,11 @@ class Symptom extends Component
     public $inputs = [];
     public $i = 1;
 
+    public function mount(){
+        if(!Auth::id()){
+            return redirect()->route('app.login-form');
+        }
+    }
     public function addContactPerson($i)
     {
         $i = $i + 1;
