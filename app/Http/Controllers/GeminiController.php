@@ -51,10 +51,17 @@ class GeminiController extends Controller
             $message->message = $userMessage;
             $message->save();
 
+            $text_input = implode(" ", $conversation->messages()->pluck('message')->toArray());
             // Send the user message to Gemini AI and get the response
-            $botResponse = executeGemi($conversation->messages()->pluck('message'));
+            $botResponse = executeGemi($text_input);
             // $botResponse = $this->sendToGemini($userMessage);
 
+            // generate title for conversation
+            if(!Conversation::find($request->post('conversation_id'))){
+                // return response()->json([' OK  !!!!']);
+                $conversation->title = executeGemi("Generate title for : ".implode(" ", $conversation->messages()->pluck('message')->toArray()));
+                $conversation->save();
+            }
             // Store the bot response
             $responseMessage = new Message();
             $responseMessage->conversation_id = $conversation->id;
@@ -75,6 +82,9 @@ class GeminiController extends Controller
 
     public function getConversationMessages($id) {
         try {
+            if(!$id){
+                return response()->json(['status' => true, 'messages' => []], 200);
+            }
             $messages = Message::where('conversation_id', $id)->orderBy('created_at', 'asc')->get();
             return response()->json(['status' => true, 'messages' => $messages], 200);
         } catch (\Exception $e) {

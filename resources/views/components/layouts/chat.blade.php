@@ -19,22 +19,25 @@
       <div class="card-body chat p-0">
         <div class="d-flex flex-column-reverse scrollbar h-100 p-3">
           <div class="text-end mt-6">
-            <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
-              <p class="mb-0 fw-semibold fs-9">I need help with something</p>
-              <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
-            </a>
-            <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
-              <p class="mb-0 fw-semibold fs-9">I can’t reorder a product I previously ordered</p>
-              <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
-            </a>
-            <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
-              <p class="mb-0 fw-semibold fs-9">How do I place an order?</p>
-              <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
-            </a>
-            <a class="false d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
-              <p class="mb-0 fw-semibold fs-9">My payment method not working</p>
-              <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
-            </a>
+            <div class="default-chat">
+              <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
+                <p class="mb-0 fw-semibold fs-9">I need help with something</p>
+                <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
+              </a>
+              <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
+                <p class="mb-0 fw-semibold fs-9">I can’t reorder a product I previously ordered</p>
+                <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
+              </a>
+              <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
+                <p class="mb-0 fw-semibold fs-9">How do I place an order?</p>
+                <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
+              </a>
+              <a class="mb-2 false d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
+                <p class="mb-0 fw-semibold fs-9">My payment method not working</p>
+                <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
+              </a>
+            </div>
+            {{-- <div class='dialogue'></div> --}}
           </div>
           {{-- <div>
             <div class="d-flex chat-message">
@@ -114,7 +117,7 @@
       </div>
       <div class="card-footer d-flex align-items-center gap-2 border-top border-translucent ps-3 pe-4 py-3">
         <div class="d-flex align-items-center flex-1 gap-3 border border-translucent rounded-pill px-4">
-          <input class="form-control outline-none border-0 flex-1 fs-9 px-0" type="text" placeholder="Write message" id="input_message">
+          <input class="form-control outline-none border-0 flex-1 fs-9 px-0" type="text" placeholder="Message GCare" id="input_message">
           <label class="btn btn-link d-flex p-0 text-body-quaternary fs-9 border-0" for="supportChatPhotos">
             <span class="fa-solid fa-image"></span>
           </label>
@@ -172,53 +175,13 @@
   }
 
   function newChat(){
-    localStorage.removeItem(' conversation_id');
+    localStorage.removeItem('conversation_id');
+    const chatContainer = document.querySelectorAll('.chat .d-flex.flex-column-reverse .d-flex.chat-message');
+    for (var i = 0; i < chatContainer.length; i++) {
+        chatContainer[i].innerHTML = '';
+    }
+    hideDefaultText(false);
+    //loadConversationMessages(0);
   }
-  /*function generateResponse(message) {
-    // Dummy function to simulate message response
-    const chatContainer = document.querySelector('.chat .d-flex.flex-column-reverse');
-    const userMessageHTML = `
-      <div class="d-flex chat-message">
-        <div class="d-flex mb-2 justify-content-end flex-1">
-          <div class="w-100 w-xxl-75">
-            <div class="d-flex flex-end-center hover-actions-trigger">
-              <div class="chat-message-content me-2">
-                <div class="mb-1 sent-message-content bg-primary rounded-2 p-3 text-white" data-bs-theme="light">
-                  <p class="mb-0">${message}</p>
-                </div>
-              </div>
-            </div>
-            <div class="text-end">
-              <p class="mb-0 fs-10 text-body-tertiary text-opacity-85 fw-semibold">Just now</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    chatContainer.insertAdjacentHTML('afterbegin', userMessageHTML);
-
-    // Simulate receiving a response
-    setTimeout(() => {
-      const responseHTML = `
-        <div class="d-flex chat-message">
-          <div class="d-flex mb-2 flex-1">
-            <div class="w-100 w-xxl-75">
-              <div class="d-flex hover-actions-trigger">
-                <div class="avatar avatar-m me-3 flex-shrink-0">
-                  <img class="rounded-circle" src="../assets/img/team/20.webp" alt="">
-                </div>
-                <div class="chat-message-content received me-2">
-                  <div class="mb-1 received-message-content border rounded-2 p-3">
-                    <p class="mb-0">This is a response from Gemini AI to your message: "${message}"</p>
-                  </div>
-                </div>
-              </div>
-              <p class="mb-0 fs-10 text-body-tertiary text-opacity-85 fw-semibold ms-7">Just now</p>
-            </div>
-          </div>
-        </div>
-      `;
-      chatContainer.insertAdjacentHTML('afterbegin', responseHTML);
-    }, 1000);
-  }*/
+  
 </script>

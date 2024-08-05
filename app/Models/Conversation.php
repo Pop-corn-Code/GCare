@@ -9,7 +9,7 @@ class Conversation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id','title'];
 
     /**
      * Get the user that owns the conversation.
