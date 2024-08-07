@@ -32,6 +32,16 @@ class Settings extends Component
         $this->validate([
             'avatar' => 'image|max:1024', // 1MB Max
         ]);
+        dd($this->avatar);
+        // if ($this->avatar('file')) {
+        //     $imageFile = $request->file('file');
+        //     $name = str_replace(' ', '_', time() . '_' . $imageFile->getClientOriginalName());
+        //     $imageFile->move(public_path().'/media/',$name);
+        //     $documentfile = '/media/'.$name;
+        // }
+        $this->user->name = $this->user_name;
+        $this->user->email = $this->user_email;
+        $this->user->avatar = $this->user_name;
     }
 
 

@@ -30,12 +30,12 @@ Settings
                 <div class="row g-3">
                 <div class="col-12 col-sm-6">
                     <div class="form-icon-container">
-                    <div class="form-floating"><input class="form-control form-icon-input" wire:model="name" id="lastName" type="text" placeholder="Last Name"><label class="text-body-tertiary form-icon-label" for="lastName">NAME</label></div><span class="fa-solid fa-user text-body fs-9 form-icon"></span>
+                    <div class="form-floating"><input class="form-control form-icon-input" wire:model="user_name" id="lastName" type="text" placeholder="Last Name"><label class="text-body-tertiary form-icon-label" for="lastName">NAME</label></div><span class="fa-solid fa-user text-body fs-9 form-icon"></span>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
                     <div class="form-icon-container">
-                    <div class="form-floating"><input class="form-control form-icon-input" wire:model="email" id="emailSocial" type="email" placeholder="Email"><label class="text-body-tertiary form-icon-label" for="emailSocial">ENTER YOUR EMAIL</label></div><span class="fa-solid fa-envelope text-body fs-9 form-icon"></span>
+                    <div class="form-floating"><input class="form-control form-icon-input" wire:model="user_email" id="emailSocial" type="email" placeholder="Email"><label class="text-body-tertiary form-icon-label" for="emailSocial">ENTER YOUR EMAIL</label></div><span class="fa-solid fa-envelope text-body fs-9 form-icon"></span>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6">
@@ -60,7 +60,9 @@ Settings
                 </div>
             </div>
             <div class="text-end mb-6">
-                <div><button class="btn btn-phoenix-secondary me-2">Cancel Changes</button><button class="btn btn-phoenix-primary" type="submitwire:model="" ">Save Information</button></div>
+                <div>
+                    <button class="btn btn-phoenix-secondary me-2">Cancel Changes</button>
+                    <button class="btn btn-phoenix-primary" type="submit">Save Information</button></div>
             </div>
             </div>
         </div>

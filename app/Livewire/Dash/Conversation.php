@@ -41,7 +41,7 @@ class Conversation extends Component
     
     public function render()
     {
-        $this->conversations=ModelsConversation::where('user_id', Auth::id())->with(['messages'])->get();
+        $this->conversations=ModelsConversation::where('user_id', Auth::id())->where('is_delete', false)->with(['messages'])->get();
 
         return view('livewire.dash.conversation');
     }

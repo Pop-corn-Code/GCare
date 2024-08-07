@@ -157,7 +157,7 @@ Chat History
                             <p class="pt-2">{{__('You won\'t be able to revert this!')}} &#128522;</p>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="button" wire:click="delete" class="btn btn-danger mx-3" data-dismiss="modal">{{__('Confirm')}}</button>
+                            <button type="button" wire:click="delete" class="btn btn-danger mx-3" data-bs-dismiss="modal">{{__('Confirm')}}</button>
                             <button type="button" class="btn text-700 btn-light " data-bs-dismiss="modal">{{__('Cancel')}}</button>
                         </div>
                     </div>

@@ -10,44 +10,117 @@
       </div>
       <div class="offcanvas-body scrollbar px-card" id="themeController">
         <div class="setting-panel-item mt-0">
-          <h5 class="setting-panel-item-title">Color Scheme</h5>
+          <h5 class="setting-panel-item-title">Symptom Data</h5>
           <div class="row gx-2">
-            <div class="col-4"><input class="btn-check" id="themeSwitcherLight" name="theme-color" type="radio" value="light" data-theme-control="phoenixTheme"><label class="btn d-inline-block btn-navbar-style fs-9" for="themeSwitcherLight"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0" src="../assets/img/generic/default-light.png" alt=""></span><span class="label-text">Light</span></label></div>
-            <div class="col-4"><input class="btn-check" id="themeSwitcherDark" name="theme-color" type="radio" value="dark" data-theme-control="phoenixTheme"><label class="btn d-inline-block btn-navbar-style fs-9" for="themeSwitcherDark"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0" src="../assets/img/generic/default-dark.png" alt=""></span><span class="label-text"> Dark</span></label></div>
-            <div class="col-4"><input class="btn-check" id="themeSwitcherAuto" name="theme-color" type="radio" value="auto" data-theme-control="phoenixTheme"><label class="btn d-inline-block btn-navbar-style fs-9" for="themeSwitcherAuto"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0" src="../assets/img/generic/auto.png" alt=""></span><span class="label-text"> Auto</span></label></div>
+
+              <div class="mb-3">
+                  <label class="form-group" for="date">Date</label>
+                  <input type="date" id="date" class="form-control @error('date') is-invalid @enderror" wire:model="date">
+                  @error('date') <span class="invalid-feedback">{{ $message }}</span> @enderror
+              </div>
+              <div class="mb-3">
+                  <label class="form-label" for="symptomType">Symptom Type</label>
+                  <select class="form-select" wire:model="symptomType" aria-label="Symptom type">
+                    <option value="">Select Symptom Type</option>
+                    <option value="cardiovascular">Cardiovascular</option>
+                    <option value="respiratory">Respiratory</option>
+                    <option value="gastrointestinal">Gastrointestinal</option>
+                    <option value="neurological">Neurological</option>
+                    <option value="musculoskeletal">Musculoskeletal</option>
+                    <option value="genitourinary">Genitourinary</option>
+                    <option value="skin">Skin</option>
+                    <option value="endocrine">Endocrine</option>
+                    <option value="pain">Pain</option>
+                    <option value="fever">Fever</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="weight_change">Weight Change</option>
+                    <option value="allergic_reactions">Allergic Reactions</option>
+                    <option value="other">Other</option>
+                  </select>
+                  {{-- <input type="text" id="symptomType" wire:model="symptomType" class="form-control" required> --}}
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label" for="symptom">Symptom</label>
+                  <input type="text" id="symptom" class="form-control @error('symptom') is-invalid @enderror" wire:model="symptom">
+                  @error('symptom') <span class="invalid-feedback">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label" for="severity">How bad is it? (1-10)</label>
+                  <input type="number" id="severity" class="form-control @error('severity') is-invalid @enderror" wire:model="severity" min="1" max="10">
+                  @error('severity') <span class="invalid-feedback">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label" for="symptom_duration">How long has this been going on?</label>
+                  <input type="text" id="symptom_duration" class="form-control @error('symptom_duration') is-invalid @enderror" wire:model="symptom_duration">
+                  @error('symptom_duration') <span class="invalid-feedback">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label" for="symptom_location">Where does it hurt or feel uncomfortable?</label>
+                  <input type="text" id="symptom_location" class="form-control @error('symptom_location') is-invalid @enderror" wire:model="symptom_location">
+                  @error('symptom_location') <span class="invalid-feedback">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label" for="notes">Can you tell us more about it? (Optional)</label>
+                  <textarea id="notes" class="form-control @error('notes') is-invalid @enderror" wire:model="notes" rows="5"></textarea>
+                  @error('notes') <span class="invalid-feedback">{{ $message }}</span> @enderror
+              </div>
           </div>
         </div>
         <div class="border border-translucent rounded-3 p-4 setting-panel-item bg-body-emphasis">
           <div class="d-flex justify-content-between align-items-center">
-            <h5 class="setting-panel-item-title mb-1">RTL </h5>
-            <div class="form-check form-switch mb-0"><input class="form-check-input ms-auto" type="checkbox" data-theme-control="phoenixIsRTL"></div>
+            <h5 class="setting-panel-item-title mb-1">Trigger Data </h5>
           </div>
-          <p class="mb-0 text-body-tertiary">Change text direction</p>
-        </div>
-        <div class="border border-translucent rounded-3 p-4 setting-panel-item bg-body-emphasis">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="setting-panel-item-title mb-1">Support Chat </h5>
-            <div class="form-check form-switch mb-0"><input class="form-check-input ms-auto" type="checkbox" data-theme-control="phoenixSupportChat"></div>
+          <p class="mb-3 text-body-tertiary">What makes it better or worse?</p>
+
+          <div class="mb-3">
+              <label class="form-label" for="trigger_name">What makes your symptoms worse? </label>
+              <input type="text" id="trigger_name" class="form-control @error('trigger_name') is-invalid @enderror" wire:model="trigger_name">
+              @error('trigger_name') <span class="invalid-feedback">{{ $message }}</span> @enderror
           </div>
-          <p class="mb-0 text-body-tertiary">Toggle support chat</p>
+
+          <div class="mb-3">
+              <label class="form-label" for="trigger_description">Can you explain more about what makes it worse? (Optional)</label>
+              <textarea id="trigger_description" class="form-control @error('trigger_description') is-invalid @enderror" wire:model="trigger_description" rows="5"></textarea>
+              @error('trigger_description') <span class="invalid-feedback">{{ $message }}</span> @enderror
+          </div>
+
         </div>
         <div class="setting-panel-item">
-          <h5 class="setting-panel-item-title">Navigation Type</h5>
+          <h5 class="setting-panel-item-title">Your Environment</h5>
           <div class="row gx-2">
-            <div class="col-6"><input class="btn-check" id="navbarPositionVertical" name="navigation-type" type="radio" value="vertical" data-theme-control="phoenixNavbarPosition"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarPositionVertical"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none" src="../assets/img/generic/default-light.png" alt=""><img class="img-fluid img-prototype d-light-none" src="../assets/img/generic/default-dark.png" alt=""></span><span class="label-text">Vertical</span></label></div>
-            <div class="col-6"><input class="btn-check" id="navbarPositionHorizontal" name="navigation-type" type="radio" value="horizontal" data-theme-control="phoenixNavbarPosition"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarPositionHorizontal"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none" src="../assets/img/generic/top-default.png" alt=""><img class="img-fluid img-prototype d-light-none" src="../assets/img/generic/top-default-dark.png" alt=""></span><span class="label-text"> Horizontal</span></label></div>
-            <div class="col-6"><input class="btn-check" id="navbarPositionCombo" name="navigation-type" type="radio" value="combo" data-theme-control="phoenixNavbarPosition"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarPositionCombo"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none" src="../assets/img/generic/nav-combo-light.png" alt=""><img class="img-fluid img-prototype d-light-none" src="../assets/img/generic/nav-combo-dark.png" alt=""></span><span class="label-text"> Combo</span></label></div>
-            <div class="col-6"><input class="btn-check" id="navbarPositionTopDouble" name="navigation-type" type="radio" value="dual-nav" data-theme-control="phoenixNavbarPosition"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarPositionTopDouble"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none" src="../assets/img/generic/dual-light.png" alt=""><img class="img-fluid img-prototype d-light-none" src="../assets/img/generic/dual-dark.png" alt=""></span><span class="label-text"> Dual nav</span></label></div>
+
+            <div class="mb-3">
+                <label class="form-label" for="location">Where are you located?</label>
+                <input type="text" id="location" class="form-control @error('location') is-invalid @enderror" wire:model="location">
+                @error('location') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="trigger_description">Describe your indoor environment:</label>
+                <textarea id="trigger_description" class="form-control @error('trigger_description') is-invalid @enderror" wire:model="trigger_description" rows="5"></textarea>
+                @error('trigger_description') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="occupation">What is your occupation?</label>
+                <input type="text" id="occupation" class="form-control @error('occupation') is-invalid @enderror" wire:model="occupation">
+                @error('occupation') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="lifestyle">Describe your lifestyle:</label>
+                <textarea id="lifestyle" class="form-control @error('lifestyle') is-invalid @enderror" wire:model="lifestyle" rows="5"></textarea>
+                @error('lifestyle') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+
           </div>
         </div>
-        <div class="setting-panel-item">
-          <h5 class="setting-panel-item-title">Vertical Navbar Appearance</h5>
-          <div class="row gx-2">
-            <div class="col-6"><input class="btn-check" id="navbar-style-default" type="radio" name="config.name" value="default" data-theme-control="phoenixNavbarVerticalStyle"><label class="btn d-block w-100 btn-navbar-style fs-9" for="navbar-style-default"> <img class="img-fluid img-prototype d-dark-none" src="../assets/img/generic/default-light.png" alt=""><img class="img-fluid img-prototype d-light-none" src="../assets/img/generic/default-dark.png" alt=""><span class="label-text d-dark-none"> Default</span><span class="label-text d-light-none">Default</span></label></div>
-            <div class="col-6"><input class="btn-check" id="navbar-style-dark" type="radio" name="config.name" value="darker" data-theme-control="phoenixNavbarVerticalStyle"><label class="btn d-block w-100 btn-navbar-style fs-9" for="navbar-style-dark"> <img class="img-fluid img-prototype d-dark-none" src="../assets/img/generic/vertical-darker.png" alt=""><img class="img-fluid img-prototype d-light-none" src="../assets/img/generic/vertical-lighter.png" alt=""><span class="label-text d-dark-none"> Darker</span><span class="label-text d-light-none">Lighter</span></label></div>
-          </div>
-        </div>
-        <div class="setting-panel-item">
+        {{-- <div class="setting-panel-item">
           <h5 class="setting-panel-item-title">Horizontal Navbar Shape</h5>
           <div class="row gx-2">
             <div class="col-6"><input class="btn-check" id="navbarShapeDefault" name="navbar-shape" type="radio" value="default" data-theme-control="phoenixNavbarTopShape"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarShapeDefault"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0" src="../assets/img/generic/top-default.png" alt=""><img class="img-fluid img-prototype d-light-none mb-0" src="../assets/img/generic/top-default-dark.png" alt=""></span><span class="label-text">Default</span></label></div>
@@ -60,6 +133,8 @@
             <div class="col-6"><input class="btn-check" id="navbarTopDefault" name="navbar-top-style" type="radio" value="default" data-theme-control="phoenixNavbarTopStyle"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarTopDefault"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0" src="../assets/img/generic/top-default.png" alt=""><img class="img-fluid img-prototype d-light-none mb-0" src="../assets/img/generic/top-style-darker.png" alt=""></span><span class="label-text">Default</span></label></div>
             <div class="col-6"><input class="btn-check" id="navbarTopDarker" name="navbar-top-style" type="radio" value="darker" data-theme-control="phoenixNavbarTopStyle"><label class="btn d-inline-block btn-navbar-style fs-9" for="navbarTopDarker"> <span class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0" src="../assets/img/generic/navbar-top-style-light.png" alt=""><img class="img-fluid img-prototype d-light-none mb-0" src="../assets/img/generic/top-style-lighter.png" alt=""></span><span class="label-text d-dark-none">Darker</span><span class="label-text d-light-none">Lighter</span></label></div>
           </div>
-        </div><a class="bun btn-primary d-grid mb-3 text-white mt-5 btn btn-primary" href="https://themes.getbootstrap.com/product/phoenix-admin-dashboard-webapp-template/" target="_blank">Purchase template</a>
+        </div> --}}
+        {{-- <a class="bun btn-primary d-grid mb-3 text-white mt-5 btn btn-primary" href="https://themes.getbootstrap.com/product/phoenix-admin-dashboard-webapp-template/" target="_blank">Purchase template</a> --}}
+        <a class="bun btn-primary d-grid mb-3 text-white mt-5 btn btn-primary" href="#">Save data</a>
       </div>
     </div>
