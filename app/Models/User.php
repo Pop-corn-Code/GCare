@@ -55,4 +55,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Conversation::class);
     }
+
+    public function symptoms(){
+        return $this->hasMany(Symptom::class);
+    }
 }

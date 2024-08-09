@@ -11,10 +11,25 @@ class Symptom extends Model
 
     protected $fillable = [
         'user_id',
-        'date',
+        'symptom_name',
+        'symptom_onset',
         'time',
         'symptom_type',
-        'severity',
-        'notes',
+        'symptom_severity',
+        'symptom_location',
+        'symptom_description',
+        'symptom_duration',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
+    public function trigger(){
+        return $this->hasOne(Trigger::class);
+    }
+
+    public function environment(){
+        return $this->hasOne(Environment::class);
+    }
 }

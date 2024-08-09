@@ -106,14 +106,16 @@ Symptoms
           </div>
         </div>
 </div>
-
-@push('scripts')
+@script
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        window.livewire.emit('show');
-    });
-    window.livewire.on('show', () => {
-        $('#CreateRegionModal').modal('show');
-    });
+/*document.addEventListener('symptom-deleted', () => { 
+  $("#DeleteModal").modal('hide'); 
+});
+    $wire.on('symptom-deleted', () => {
+        $('#DeleteModal').modal('hide');
+    });*/
+    window.livewire.on('symptom-deleted', () => {
+     $('#DeleteModal').modal('hide');
+ })
 </script>
-@endpush
+@endscript
