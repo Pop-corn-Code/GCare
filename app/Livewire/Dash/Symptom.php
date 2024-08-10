@@ -33,7 +33,7 @@ class Symptom extends Component
 
     // Environement data
     public ?string $location;
-    public ?string $indoor_enivironement = '';
+    public string $indoor_enivironement;
     public ?string $occupation;
     public ?string $lifestyle = '';
 
@@ -41,7 +41,6 @@ class Symptom extends Component
         if(!Auth::id()){
             return redirect()->route('app.login-form');
         }
-        $this->symptoms = SymptomModel::where('user_id', Auth::id())->where('is_delete', false)->orderBy('created_at', 'desc')->get();
     }
     
 
@@ -73,10 +72,27 @@ class Symptom extends Component
 
         $this->symptomData = $symptom;
         $this->symptom_name = $symptom->symptom_name;
+        $this->symptom_type = $symptom->symptom_type;
         $this->symptom_onset = $symptom->symptom_onset;
-        $this->symptom_severity = $symptom->severity;
+        $this->symptom_severity = $symptom->symptom_severity;
+        $this->symptom_duration = $symptom->symptom_duration;
+        $this->symptom_location = $symptom->symptom_location;
         $this->symptom_description = $symptom->symptom_description;
         $this->symptom_id = $symptom->id;
+
+        if($this->symptomData){
+            // trigger
+            $trigger = $this->symptomData->trigger;
+            $this->trigger_name = $trigger->trigger_name;
+            $this->trigger_description = $trigger->trigger_description;
+
+            // environmental data
+            $environment = $this->symptomData->environment;
+            $this->location = $environment->location;
+            $this->indoor_enivironement = $environment->indoor_enivironement;
+            $this->occupation = $environment->occupation;
+            $this->lifestyle = $environment->lifestyle;
+        }
     }
     
     /*public function refresh($message, $modal)
@@ -112,15 +128,22 @@ class Symptom extends Component
                 'trigger_name' => $this->trigger_name,
                 'trigger_description' => $this->trigger_description,
             ]);
-
+// dd($this->indoor_enivironement);
             $this->validate($this->environment_rules);
-            $environment = Environment::create([
-                'symptom_id' => $symptom->id,
-                'location' => $this->location,
-                'indoor_enivironement' => $this->indoor_enivironement,
-                'occupation' => $this->occupation,
-                'lifestyle' => $this->lifestyle,
-            ]);
+            $environment = new Environment();
+            $environment->symptom_id = $symptom->id;
+            $environment->location = $this->location;
+            $environment->indoor_enivironement = $this->indoor_enivironement;
+            $environment->occupation = $this->occupation;
+            $environment->lifestyle = $this->lifestyle;
+            $environment->save();
+            // ::create([
+            //     'symptom_id' => $symptom->id,
+            //     'location' => $this->location,
+            //     'indoor_enivironement' => $this->indoor_enivironement,
+            //     'occupation' => $this->occupation,
+            //     'lifestyle' => $this->lifestyle,
+            // ]);
 
             // Reset fields after storing
             $this->reset([
@@ -140,7 +163,7 @@ class Symptom extends Component
             ]);
         });
 
-        // session()->flash('message', 'Symptom logged successfully.');
+        session()->flash('message', 'Symptom logged successfully.');
 
         // $this->reset();
     }
@@ -165,6 +188,8 @@ class Symptom extends Component
     
     public function render()
     {
+        $this->symptoms = SymptomModel::where('user_id', Auth::id())->where('is_delete', false)->orderBy('created_at', 'desc')->get();
+        
         return view('livewire.dash.symptoms.index');
     }
 }

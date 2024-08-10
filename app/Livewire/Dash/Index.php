@@ -39,19 +39,19 @@ class Index extends Component
         $userId = Auth::id();
 
         $this->newSymptomsToday = Symptom::where('user_id', $userId)
-            ->whereDate('date', today())
+            ->whereDate('symptom_onset', today())
             ->count();
 
         $this->highSeveritySymptomsToday = Symptom::where('user_id', $userId)
-            ->whereDate('date', today())
-            ->where('severity', '>', 7)
+            ->whereDate('symptom_onset', today())
+            ->where('symptom_severity', '>', 7)
             ->count();
 
         $this->pendingRecommendations = Recommendation::where('user_id', $userId)
             ->where('status', 'pending')
             ->count();
 
-        $this->recentTriggersIdentified = Trigger::where('user_id', $userId)
+        $this->recentTriggersIdentified = Trigger::whereIn('symptom_id', Symptom::where('user_id', $userId)->pluck('id'))
             ->where('created_at', '>=', now()->subWeek())
             ->count();
 
@@ -66,7 +66,7 @@ class Index extends Component
     private function calculateAllergyStatus($userId)
     {
         $symptoms = Symptom::where('user_id', $userId)
-            ->whereDate('date', today())
+            ->whereDate('symptom_onset', today())
             ->get();
 
         if ($symptoms->isEmpty()) {
@@ -89,28 +89,28 @@ class Index extends Component
         $userId = Auth::id();
 
         $this->totalSymptomsThisMonth = Symptom::where('user_id', $userId)
-            ->whereMonth('date', now()->month)
+            ->whereMonth('symptom_onset', now()->month)
             ->count();
 
         $this->totalHighSeveritySymptomsThisMonth = Symptom::where('user_id', $userId)
-            ->whereMonth('date', now()->month)
-            ->where('severity', '>', 7)
+            ->whereMonth('symptom_onset', now()->month)
+            ->where('symptom_severity', '>', 7)
             ->count();
 
-        $this->mostCommonTriggers = Trigger::where('user_id', $userId)
-            ->select('trigger_type', DB::raw('count(*) as total'))
+        $this->mostCommonTriggers = Trigger::whereIn('symptom_id', Symptom::where('user_id', $userId)->pluck('id'))
+            ->select('trigger_name', DB::raw('count(*) as total'))
             // ->select('trigger', DB::raw('count(*) as total'))
             // ->groupBy('trigger')
-            ->groupBy('trigger_type')
+            ->groupBy('trigger_name')
             ->orderBy('total', 'desc')
             ->limit(3)
             ->get()
-            ->pluck('trigger_type')
+            ->pluck('trigger_name')
             ->implode(', ');
 
         $this->averageSeverityThisMonth = Symptom::where('user_id', $userId)
-            ->whereMonth('date', now()->month)
-            ->avg('severity');
+            ->whereMonth('symptom_onset', now()->month)
+            ->avg('symptom_severity');
 
         $this->historicalEnvironmentalDataTrends = EnvironmentalData::where('user_id', $userId)
             ->whereMonth('recorded_at', now()->month)

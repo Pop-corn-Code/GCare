@@ -24,7 +24,7 @@
                 <p class="mb-0 fw-semibold fs-9">I need help with something</p>
                 <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
               </a>
-              <a class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
+              <a onclick='submit()' class="mb-2 d-inline-flex align-items-center text-decoration-none text-body-emphasis bg-body-hover rounded-pill border border-primary py-2 ps-4 pe-3" href="#!">
                 <p class="mb-0 fw-semibold fs-9">I can’t reorder a product I previously ordered</p>
                 <span class="fa-solid fa-paper-plane text-primary fs-9 ms-3"></span>
               </a>

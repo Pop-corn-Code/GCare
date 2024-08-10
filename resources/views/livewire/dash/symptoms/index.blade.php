@@ -2,7 +2,7 @@
 Symptoms
 @endsection
 <div>
-    @include('livewire.dash.symptoms.test')
+    @include('livewire.dash.symptoms.view')
     @include('livewire.dash.symptoms.add')
     @include('livewire.dash.symptoms.delete')
     <nav class="mb-2" aria-label="breadcrumb">
@@ -44,6 +44,7 @@ Symptoms
                 <thead>
                     <tr>
                         <th class="sort align-middle" scope="col" data-sort="date" style="width:15%; min-width:200px;">DATE</th>
+                        <th class="sort align-middle" scope="col" data-sort="date" style="width:15%; min-width:200px;">Symptom</th>
                         <th class="sort align-middle pe-3" scope="col" data-sort="symptom_type" style="width:20%; min-width:200px;">SYMPTOM TYPE</th>
                         <th class="sort align-middle" scope="col" data-sort="severity" style="width:10%;">SEVERITY</th>
                         <th class="sort align-middle text-end" scope="col" data-sort="notes" style="width:21%; min-width:200px;">NOTES</th>
@@ -54,17 +55,18 @@ Symptoms
                  @forelse($symptoms as $symptom)
                      <tr>
                         <td class="align-middle">{{ $symptom->created_at->format('M d, h:i A') }}</td>
+                        <td class="align-middle">{{$symptom->symptom_name}}</td>
                         <td class="align-middle">{{$symptom->symptom_type}}</td>
                         <td class="align-middle">
                             <div class="progress" style="height:15px">
-                                <div class="progress-bar rounded-3" role="progressbar" style="width: {{$symptom->severity*10}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$symptom->severity*10}}%</div>
+                                <div class="progress-bar rounded-3" role="progressbar" style="width: {{$symptom->symptom_severity*10}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$symptom->symptom_severity*10}}%</div>
                             </div>
                         </td>
-                        <td class="align-middle text-end">{{$symptom->notes}}</td>
+                        <td class="align-middle text-end">{{$symptom->symptom_description}}</td>
                         <td class="align-middle text-end">
-                            <a href='#' wire:click="initData({{ $symptom->id }})" data-bs-toggle="modal" data-bs-target="#EditRegionModal">
-                                    <svg class="icon icon-xs text-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            <a href='#' wire:click="initData({{ $symptom->id }})" data-bs-toggle="modal" data-bs-target="#viewSymptomModal">
+                                    <svg class="icon icon-xs text-800" width="24px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
                                 </a>
                             <a href='#' wire:click="initData({{ $symptom->id }})" data-bs-toggle="modal" data-bs-target="#DeleteModal" >

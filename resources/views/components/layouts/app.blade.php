@@ -60,6 +60,8 @@
   </head>
   @inject('request', 'Illuminate\Http\Request')
   <body class="bg-body-emphasis" style="--phoenix-scroll-margin-top: 1.2rem;">
+      {{-- @include('components.alert') --}}
+
     <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->

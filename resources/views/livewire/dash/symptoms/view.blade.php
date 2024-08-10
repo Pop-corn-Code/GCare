@@ -1,8 +1,8 @@
-  <div class="offcanvas offcanvas-end settings-panel border-0" id="storeModal" tabindex="-1" aria-labelledby="storeModal" style="max-width:40%;">
+  <div class="offcanvas offcanvas-end settings-panel border-0" id="viewSymptomModal" tabindex="-1" aria-labelledby="viewSymptomModal" style="max-width:40%;">
       <div class="offcanvas-header align-items-start border-bottom flex-column border-translucent">
         <div class="pt-1 w-100 mb-6 d-flex justify-content-between align-items-start">
           <div>
-            <h5 class="mb-2 me-2 lh-sm"><span class="fa-solid fa-stethoscope text-primary me-2 fs-8"></span>Log A New Symptom</h5>
+            <h5 class="mb-2 me-2 lh-sm"><span class="fa-solid fa-stethoscope text-primary me-2 fs-8"></span>Symptom information</h5>
             <p class="mb-0 fs-9">Explore different styles according to your preferences</p>
           </div><button class="btn p-1 fw-bolder" type="button" data-bs-dismiss="offcanvas" aria-label="Close"><span class="fas fa-times fs-8"> </span></button>
         </div><button class="btn btn-phoenix-secondary w-100" data-theme-control="reset"><span class="fas fa-arrows-rotate me-2 fs-10"></span>Clear fields</button>
